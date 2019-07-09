@@ -18,7 +18,7 @@
 
 * 修改OpenAuth.Mvc/appsettings.json连接字符串，如下：
 ```xml
- "OpenAuthDBContext": "Data Source=.;Initial Catalog=OpenAuthDB;User=sa;Password=000000"
+ "OpenAuthDBContext": "Data Source=127.0.0.1;Initial Catalog=DatabaseName;User=sa;Password=000000"
 ```
 
 * 修改OpenAuth.WebApi/appsettings.json连接字符串,如下：
@@ -32,5 +32,4 @@
 `注：首次启动时，visual studio会启动nuget还原第三方依赖包，请保持网络通畅，并等待一段时间`
 
 启动openauth.mvc项目。
-![启动](http://demo.openauth.me:8887/upload_files/190110165027039.jpg "启动")
-
+![启动](190110165027039.jpg)

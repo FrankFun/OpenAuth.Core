@@ -12,7 +12,7 @@ namespace OpenAuth.App
 
         public AppSetting()
         {
-            SSOPassport = "http://localhost:52789";  
+            SSOPassport = "http://localhost:3306";  
             Version = "";
             UploadPath = "";
             IdentityServerUrl = "";

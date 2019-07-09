@@ -8,7 +8,7 @@
 
     * 使用CodeSmith Generator Studio 打开Openauth.Net项目中CodeSmith文件夹。
 
-    ![](http://119.84.146.233:8887/upload_files/190110171420673.png " ")
+    ![](190110171420673.png " ")
     
     * 右建Entity.cst，选择Execute。弹出数据库的相关配置。
     
@@ -24,11 +24,11 @@
     
     * 选择数据库中Stock表，其他配置不变。
 
-    ![](http://119.84.146.233:8887/upload_files/190110171420676.png "")
+    ![](190110171420676.png "")
 
     * 点击`Generate`生成代码，生成后代码在`X:\~~\OpenAuth.Net\CodeSmith\CSharp`文件夹中。
 
-    ![](http://119.84.146.233:8887/upload_files/190110171757977.png "")
+    ![](190110171757977.png "")
 
     * 生成的代码严格按照应用层APP、控制器controllers、用户界面views、用户界面脚本userJs划分。将生成的代码复制到项目对应的文件夹中。
 
@@ -40,7 +40,7 @@
 
  * 添加模块
 
- ![](http://119.84.146.233:8887/upload_files/190110172049261.png)
+ ![](190110172049261.png)
 
  `注意` 模块标识必须和模块的controller一致，否则模块不能正常加载
 
