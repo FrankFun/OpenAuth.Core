@@ -1,10 +1,10 @@
-## 下载代码
+# 下载代码
 
-使用git工具下载代码，代码地址：https://gitee.com/yubaolee/OpenAuth.Core.git
+使用git工具下载[码云代码](https://gitee.com/yubaolee/OpenAuth.Core.git)
 
 ## 安装sdk
 
-下载安装微软官方SDK，代码地址：https://dotnet.microsoft.com/download
+下载安装[微软官方SDK](https://dotnet.microsoft.com/download)
 
 ## 初始化数据库
 
@@ -17,11 +17,13 @@
 ## 修改连接字符串
 
 * 修改OpenAuth.Mvc/appsettings.json连接字符串，如下：
+
 ```xml
  "OpenAuthDBContext": "Data Source=127.0.0.1;Initial Catalog=DatabaseName;User=sa;Password=000000"
 ```
 
 * 修改OpenAuth.WebApi/appsettings.json连接字符串,如下：
+
 ```xml
  "OpenAuthDBContext": "Data Source=.;Initial Catalog=OpenAuthDB;User=sa;Password=000000"
 ```

@@ -1,4 +1,4 @@
-OpenAuth.Core是一个开源的权限工作流快速开发框架。框架基于Martin Fowler企业级应用开发思想及全新技术组合（Asp.Net MVC、EF、AutoFac、WebAPI、Swagger、Json.Net等），核心模块包括：组织机构、角色用户、权限授权、表单设计、工作流等。
+# OpenAuth.Core是一个开源的权限工作流快速开发框架。框架基于Martin Fowler企业级应用开发思想及全新技术组合（Asp.Net MVC、EF、AutoFac、WebAPI、Swagger、Json.Net等），核心模块包括：组织机构、角色用户、权限授权、表单设计、工作流等
 
 ## 特性
 
@@ -18,13 +18,15 @@ OpenAuth.Core是一个开源的权限工作流快速开发框架。框架基于M
 **机构**树形的公司部门结构，国内公司用的比较多，它实际上就是一个用户组，机构和用户设计成N:N的关系，也就是说有时候一个用户可以从属于两个部门，这种情况在我们客户需求中的确都出现过。
 
 ## 技术栈
+
 * 前端 vue + layui + ztree + gooflow + leipiformdesign
 * 后端 .net core + Web API + EF core + autofac + swagger + json.net
 * 代码生成工具 CodeSmith
 * 设计工具 PowerDesigner + Enterprise Architect
 * 部署环境 docker + jenkins
 
-## 系统工程结构：
+## 系统工程结构
+
 1. OpenAuth.Repository 系统仓储层，用于数据库操作
 1. OpenAuth.App 应用层，为界面提供接口
 1. OpenAuth.Mvc Web站点
