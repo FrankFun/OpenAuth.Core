@@ -1,9 +1,9 @@
 // ***********************************************************************
 // Assembly         : OpenAuth.App
-// Author           : ÀîÓñ±¦
+// Author           : æç‰å®
 // Created          : 07-05-2018
 //
-// Last Modified By : ÀîÓñ±¦
+// Last Modified By : æç‰å®
 // Last Modified On : 07-05-2018
 // ***********************************************************************
 // <copyright file="ApiAuth.cs" company="OpenAuth.App">
@@ -22,8 +22,8 @@ using OpenAuth.App.Interface;
 namespace OpenAuth.App.SSO
 {
     /// <summary>
-    /// µÚÈı·½ÍøÕ¾µÇÂ¼ÑéÖ¤Àà
-    /// <para>µÇÂ¼Ê±£º</para>
+    /// ç¬¬ä¸‰æ–¹ç½‘ç«™ç™»å½•éªŒè¯ç±»
+    /// <para>ç™»å½•æ—¶ï¼š</para>
     /// <code>
     ///  var result = IAuth.Login(AppKey, username, password);
     ///  if (result.Success)
@@ -58,7 +58,7 @@ namespace OpenAuth.App.SSO
             return cookie == null ? String.Empty : cookie;
         }
         /// <summary>
-        /// Í¨¹ıWebApi¼ìÑétokenÊÇ·ñÓĞĞ§
+        /// é€šè¿‡WebApiæ£€éªŒtokenæ˜¯å¦æœ‰æ•ˆ
         /// </summary>
         /// <remarks>http://www.openauth.me</remarks>
         public bool CheckLogin(string token="", string otherInfo = "")
@@ -92,8 +92,8 @@ namespace OpenAuth.App.SSO
         }
 
         /// <summary>
-        /// »ñÈ¡µ±Ç°µÇÂ¼µÄÓÃ»§ĞÅÏ¢
-        /// <para>Í¨¹ıURLÖĞµÄToken²ÎÊı»òCookieÖĞµÄToken</para>
+        /// è·å–å½“å‰ç™»å½•çš„ç”¨æˆ·ä¿¡æ¯
+        /// <para>é€šè¿‡URLä¸­çš„Tokenå‚æ•°æˆ–Cookieä¸­çš„Token</para>
         /// </summary>
         /// <param name="account">The account.</param>
         /// <returns>LoginUserVM.</returns>
@@ -105,8 +105,8 @@ namespace OpenAuth.App.SSO
 
 
         /// <summary>
-        /// »ñÈ¡WebApiÖĞµ±Ç°µÇÂ¼µÄÓÃ»§Ãû
-        /// <para>Í¨¹ıURLÖĞµÄToken²ÎÊı»òCookieÖĞµÄToken</para>
+        /// è·å–WebApiä¸­å½“å‰ç™»å½•çš„ç”¨æˆ·å
+        /// <para>é€šè¿‡URLä¸­çš„Tokenå‚æ•°æˆ–Cookieä¸­çš„Token</para>
         /// </summary>
         /// <param name="otherInfo">The account.</param>
         /// <returns>System.String.</returns>
@@ -131,11 +131,11 @@ namespace OpenAuth.App.SSO
         }
 
         /// <summary>
-        /// Í¨¹ıWebApiµÇÂ¼£¬ÓÃ»§ĞÅÏ¢´æ·ÅÔÚwebapiÖĞ
+        /// é€šè¿‡WebApiç™»å½•ï¼Œç”¨æˆ·ä¿¡æ¯å­˜æ”¾åœ¨webapiä¸­
         /// </summary>
-        /// <param name="appKey">Ó¦ÓÃ³ÌĞòkey.</param>
-        /// <param name="username">ÓÃ»§Ãû</param>
-        /// <param name="pwd">ÃÜÂë</param>
+        /// <param name="appKey">åº”ç”¨ç¨‹åºkey.</param>
+        /// <param name="username">ç”¨æˆ·å</param>
+        /// <param name="pwd">å¯†ç </param>
         /// <returns>System.String.</returns>
         public LoginResult Login(string appKey, string username, string pwd)
         {
@@ -161,7 +161,7 @@ namespace OpenAuth.App.SSO
         }
 
         /// <summary>
-        /// ×¢Ïú
+        /// æ³¨é”€
         /// </summary>
         public bool Logout()
         {
