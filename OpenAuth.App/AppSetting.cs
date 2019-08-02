@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OpenAuth.App
-{
+namespace OpenAuth.App {
     /// <summary>
     /// 配置项
     /// </summary>
-    public class AppSetting
-    {
+    public class AppSetting {
 
-        public AppSetting()
-        {
-            SSOPassport = "http://localhost:52789";  
+        public AppSetting () {
+            SSOPassport = "http://localhost:52789";
             Version = "";
             UploadPath = "";
             IdentityServerUrl = "";
@@ -41,6 +38,6 @@ namespace OpenAuth.App
         public string IdentityServerUrl { get; set; }
 
         //是否是Identity授权方式
-        public bool IsIdentityAuth => !string.IsNullOrEmpty(IdentityServerUrl);
+        public bool IsIdentityAuth => !string.IsNullOrEmpty (IdentityServerUrl);
     }
 }

@@ -1,21 +1,17 @@
-﻿
-using System;
+﻿using System;
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using OpenAuth.App;
 using OpenAuth.App.Interface;
 using OpenAuth.App.Request;
 
-namespace OpenAuth.WebApi.Controllers
-{
-    [Route("api/[controller]/[action]")]
+namespace OpenAuth.WebApi.Controllers {
+    [Route ("api/[controller]/[action]")]
     [ApiController]
-    public class AccessObjsController : ControllerBase
-    {
+    public class AccessObjsController : ControllerBase {
         private readonly RevelanceManagerApp _app;
         private readonly IAuth _authUtil;
-        public AccessObjsController(IAuth authUtil, RevelanceManagerApp app) 
-        {
+        public AccessObjsController (IAuth authUtil, RevelanceManagerApp app) {
             _app = app;
             _authUtil = authUtil;
         }
@@ -25,52 +21,41 @@ namespace OpenAuth.WebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public Response Assign(AssignReq request)
-        {
-            var result = new Response();
-            try
-            {
-                _app.Assign(request);
-            }
-            catch (Exception ex)
-            {
-                  result.Code = 500;
+        public Response Assign (AssignReq request) {
+            var result = new Response ();
+            try {
+                _app.Assign (request);
+            } catch (Exception ex) {
+                result.Code = 500;
                 result.Message = ex.InnerException?.Message ?? ex.Message;
             }
 
             return result;
         }
+
         [HttpPost]
-        public Response UnAssign(AssignReq request)
-        {
-            var result = new Response();
-            try
-            {
-                _app.UnAssign(request.type, request.firstId, request.secIds);
-            }
-            catch (Exception ex)
-            {
-                  result.Code = 500;
+        public Response UnAssign (AssignReq request) {
+            var result = new Response ();
+            try {
+                _app.UnAssign (request.type, request.firstId, request.secIds);
+            } catch (Exception ex) {
+                result.Code = 500;
                 result.Message = ex.InnerException?.Message ?? ex.Message;
             }
 
             return result;
         }
-        
+
         /// <summary>
         /// 角色分配数据字段权限
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public Response AssignDataProperty(AssignDataReq request)
-        {
-            var result = new Response();
-            try
-            {
-                _app.AssignData(request);
-            }
-            catch (Exception ex)
-            {
+        public Response AssignDataProperty (AssignDataReq request) {
+            var result = new Response ();
+            try {
+                _app.AssignData (request);
+            } catch (Exception ex) {
                 result.Code = 500;
                 result.Message = ex.InnerException?.Message ?? ex.Message;
             }
@@ -85,15 +70,11 @@ namespace OpenAuth.WebApi.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost]
-        public Response UnAssignDataProperty(AssignDataReq request)
-        {
-            var result = new Response();
-            try
-            {
-                _app.UnAssignData(request);
-            }
-            catch (Exception ex)
-            {
+        public Response UnAssignDataProperty (AssignDataReq request) {
+            var result = new Response ();
+            try {
+                _app.UnAssignData (request);
+            } catch (Exception ex) {
                 result.Code = 500;
                 result.Message = ex.InnerException?.Message ?? ex.Message;
             }

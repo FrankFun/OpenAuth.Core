@@ -17,41 +17,32 @@
 using OpenAuth.Repository.Domain;
 using OpenAuth.Repository.Interface;
 
-namespace OpenAuth.App
-{
+namespace OpenAuth.App {
     /// <summary>
     ///  加载用户所有可访问的资源/机构/模块
     /// <para>李玉宝新增于2016-07-19 10:53:30</para>
     /// </summary>
-    public class AuthContextFactory
-    {
+    public class AuthContextFactory {
         private SystemAuthStrategy _systemAuth;
         private NormalAuthStrategy _normalAuthStrategy;
         private readonly IUnitWork _unitWork;
 
-        public AuthContextFactory(SystemAuthStrategy sysStrategy
-            , NormalAuthStrategy normalAuthStrategy
-            , IUnitWork unitWork)
-        {
+        public AuthContextFactory (SystemAuthStrategy sysStrategy, NormalAuthStrategy normalAuthStrategy, IUnitWork unitWork) {
             _systemAuth = sysStrategy;
             _normalAuthStrategy = normalAuthStrategy;
             _unitWork = unitWork;
         }
 
-        public AuthStrategyContext GetAuthStrategyContext(string username)
-        {
+        public AuthStrategyContext GetAuthStrategyContext (string username) {
             IAuthStrategy service = null;
-             if (username == Define.SYSTEM_USERNAME)
-            {
-                service= _systemAuth;
-            }
-            else
-            {
+            if (username == Define.SYSTEM_USERNAME) {
+                service = _systemAuth;
+            } else {
                 service = _normalAuthStrategy;
-                service.User = _unitWork.FindSingle<User>(u => u.Account == username);
+                service.User = _unitWork.FindSingle<User> (u => u.Account == username);
             }
 
-         return new AuthStrategyContext(service);
+            return new AuthStrategyContext (service);
         }
     }
 }

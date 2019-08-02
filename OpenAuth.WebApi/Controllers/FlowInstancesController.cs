@@ -14,28 +14,22 @@ using OpenAuth.App.Request;
 using OpenAuth.App.Response;
 using OpenAuth.Repository.Domain;
 
-namespace OpenAuth.WebApi.Controllers
-{
+namespace OpenAuth.WebApi.Controllers {
     /// <summary>
     /// 流程实例
     /// </summary>
-    [Route("api/[controller]/[action]")]
+    [Route ("api/[controller]/[action]")]
     [ApiController]
-    public class FlowInstancesController : ControllerBase
-    {
+    public class FlowInstancesController : ControllerBase {
         private readonly FlowInstanceApp _app;
 
         [HttpGet]
-        public Response<FlowVerificationResp> Get(string id)
-        {
-            var result = new Response<FlowVerificationResp>();
-            try
-            {
-                var flowinstance = _app.Get(id);
-                result.Result = flowinstance.MapTo<FlowVerificationResp>();
-            }
-            catch (Exception ex)
-            {
+        public Response<FlowVerificationResp> Get (string id) {
+            var result = new Response<FlowVerificationResp> ();
+            try {
+                var flowinstance = _app.Get (id);
+                result.Result = flowinstance.MapTo<FlowVerificationResp> ();
+            } catch (Exception ex) {
                 result.Code = 500;
                 result.Message = ex.InnerException?.Message ?? ex.Message;
             }
@@ -43,20 +37,15 @@ namespace OpenAuth.WebApi.Controllers
             return result;
         }
 
-
         /// <summary>创建一个新的流程实例</summary>
         /// <remarks> www.cnblogs.com/yubaolee, 2019-03-06. </remarks>
         /// <param name="obj"> json对象</param>
-       [HttpPost]
-        public Response Add([FromBody]JObject obj)
-        {
-            var result = new Response();
-            try
-            {
-                _app.CreateInstance(obj);
-            }
-            catch (Exception ex)
-            {
+        [HttpPost]
+        public Response Add ([FromBody] JObject obj) {
+            var result = new Response ();
+            try {
+                _app.CreateInstance (obj);
+            } catch (Exception ex) {
                 result.Code = 500;
                 result.Message = ex.InnerException?.Message ?? ex.Message;
             }
@@ -65,17 +54,13 @@ namespace OpenAuth.WebApi.Controllers
         }
 
         //添加或修改
-       [HttpPost]
-        public Response Update(FlowInstance obj)
-        {
-            var result = new Response();
-            try
-            {
-                _app.Update(obj);
+        [HttpPost]
+        public Response Update (FlowInstance obj) {
+            var result = new Response ();
+            try {
+                _app.Update (obj);
 
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 result.Code = 500;
                 result.Message = ex.InnerException?.Message ?? ex.Message;
             }
@@ -84,16 +69,12 @@ namespace OpenAuth.WebApi.Controllers
         }
 
         [HttpPost]
-        public Response Verification(VerificationReq request)
-        {
-            var response = new Response();
-            try
-            {
-                _app.Verification(request);
+        public Response Verification (VerificationReq request) {
+            var response = new Response ();
+            try {
+                _app.Verification (request);
 
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 response.Code = 500;
                 response.Message = ex.InnerException?.Message ?? ex.Message;
             }
@@ -105,22 +86,17 @@ namespace OpenAuth.WebApi.Controllers
         /// 加载列表
         /// </summary>
         [HttpGet]
-        public TableData Load([FromQuery]QueryFlowInstanceListReq request)
-        {
-            return _app.Load(request);
+        public TableData Load ([FromQuery] QueryFlowInstanceListReq request) {
+            return _app.Load (request);
         }
 
-       [HttpPost]
-        public Response Delete([FromBody]string[] ids)
-        {
-            var result = new Response();
-            try
-            {
-                _app.Delete(ids);
+        [HttpPost]
+        public Response Delete ([FromBody] string[] ids) {
+            var result = new Response ();
+            try {
+                _app.Delete (ids);
 
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 result.Code = 500;
                 result.Message = ex.InnerException?.Message ?? ex.Message;
             }
@@ -128,8 +104,7 @@ namespace OpenAuth.WebApi.Controllers
             return result;
         }
 
-        public FlowInstancesController(FlowInstanceApp app) 
-        {
+        public FlowInstancesController (FlowInstanceApp app) {
             _app = app;
         }
     }

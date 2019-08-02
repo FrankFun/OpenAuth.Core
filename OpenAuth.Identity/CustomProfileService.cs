@@ -9,10 +9,8 @@ using Microsoft.Extensions.Logging;
 using OpenAuth.App;
 using OpenAuth.Repository.Domain;
 
-namespace OpenAuth.IdentityServer
-{
-    public class CustomProfileService : IProfileService
-    {
+namespace OpenAuth.IdentityServer {
+    public class CustomProfileService : IProfileService {
         /// <summary>
         /// The logger
         /// </summary>
@@ -25,8 +23,7 @@ namespace OpenAuth.IdentityServer
         /// </summary>
         /// <param name="users">The users.</param>
         /// <param name="logger">The logger.</param>
-        public CustomProfileService( ILogger<TestUserProfileService> logger, UserManagerApp userManager)
-        {
+        public CustomProfileService (ILogger<TestUserProfileService> logger, UserManagerApp userManager) {
             Logger = logger;
             UserManager = userManager;
         }
@@ -36,32 +33,28 @@ namespace OpenAuth.IdentityServer
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns></returns>
-        public virtual Task GetProfileDataAsync(ProfileDataRequestContext context)
-        {
-            context.LogProfileRequest(Logger);
+        public virtual Task GetProfileDataAsync (ProfileDataRequestContext context) {
+            context.LogProfileRequest (Logger);
 
             //判断是否有请求Claim信息
-            if (context.RequestedClaimTypes.Any())
-            {
+            if (context.RequestedClaimTypes.Any ()) {
                 //根据用户唯一标识查找用户信息
                 var identityName = context.Subject.Identity.Name;
-                User user = GetUser(identityName);
+                User user = GetUser (identityName);
 
-               // var user = Users.FindBySubjectId(context.Subject.GetSubjectId());
-                if (user != null)
-                {
+                // var user = Users.FindBySubjectId(context.Subject.GetSubjectId());
+                if (user != null) {
                     //调用此方法以后内部会进行过滤，只将用户请求的Claim加入到 context.IssuedClaims 集合中 这样我们的请求方便能正常获取到所需Claim
-                    var claims = new[]
-                    {
-                        new Claim(ClaimTypes.Name, user.Account),  //请求用户的账号，这个可以保证User.Identity.Name有值
-                        new Claim(JwtClaimTypes.Name, user.Name),  //请求用户的姓名
+                    var claims = new [] {
+                    new Claim (ClaimTypes.Name, user.Account), //请求用户的账号，这个可以保证User.Identity.Name有值
+                    new Claim (JwtClaimTypes.Name, user.Name), //请求用户的姓名
                     };
                     //返回apiresource中定义的claims   
-                    context.AddRequestedClaims(claims);
+                    context.AddRequestedClaims (claims);
                 }
             }
 
-            context.LogIssuedClaims(Logger);
+            context.LogIssuedClaims (Logger);
 
             return Task.CompletedTask;
         }
@@ -71,30 +64,24 @@ namespace OpenAuth.IdentityServer
         /// </summary>
         /// <param name="context">The context.</param>
         /// <returns></returns>
-        public virtual Task IsActiveAsync(IsActiveContext context)
-        {
-            Logger.LogDebug("IsActive called from: {caller}", context.Caller);
+        public virtual Task IsActiveAsync (IsActiveContext context) {
+            Logger.LogDebug ("IsActive called from: {caller}", context.Caller);
 
-              var user = GetUser(context.Subject.Identity.Name);
+            var user = GetUser (context.Subject.Identity.Name);
             context.IsActive = user?.Status == 0;
             return Task.CompletedTask;
         }
 
-        private User GetUser(string identityName)
-        {
+        private User GetUser (string identityName) {
             User user;
-            if (identityName == Define.SYSTEM_USERNAME)
-            {
-                user = new User
-                {
-                    Account = Define.SYSTEM_USERNAME,
-                    Id = Define.SYSTEM_USERNAME,
-                    Name = Define.SYSTEM_USERNAME
+            if (identityName == Define.SYSTEM_USERNAME) {
+                user = new User {
+                Account = Define.SYSTEM_USERNAME,
+                Id = Define.SYSTEM_USERNAME,
+                Name = Define.SYSTEM_USERNAME
                 };
-            }
-            else
-            {
-                user = UserManager.GetByAccount(identityName);
+            } else {
+                user = UserManager.GetByAccount (identityName);
             }
 
             return user;
